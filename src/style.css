@@ -1,0 +1,47 @@
+html, body {margin: 0; height: 100%; overflow: hidden}
+
+
+h1, body {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: cursive;
+  color: plum;
+  font-size: 75px;
+}
+
+h4{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#game-board {
+  display: flex;
+  align-items: center; 
+}
+
+#game-canvas{
+  width: 800px;
+  height: 600px;
+  background-image: url('images/gamebackground.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items:center;
+}
+
+button{
+  position: absolute;
+  font-size: 30px;
+  background-color: plum;
+  color: #fff;
+  top: 500px;
+  left: 130px;
+  width: 150px;
+  height: 75px;
+}
+
+.instructions{
+font-size: 30px;
+font-family: Arial, Helvetica, sans-serif;
+}
