@@ -55,66 +55,66 @@ function collisionDetect(object1, object2){
   }
 }
 
-class Cat {
+class Four {
   constructor(width, height, x, y, direction, speed) {
     this.width = 50;
     this.height = 70;
     this.x = Math.floor(Math.random()*500)
     this.y = Math.floor(Math.random()*500);
-    this.imgsrc = 'images/Architetto----Gatto.png';
+    this.imgsrc = 'images/four.jpg';
     this.ctx = document.getElementById('game-canvas').getContext('2d');
     this.direction = {  x: Math.random() * (3) - 1,  y: Math.random() * (3) - 1 }
     this.speed = Math.random() * 4;
     }
 }
-function createCats(){
-  console.log("creating cat <<<<<< ", allCats.length)
-   allCats.push(new Cat())
-    console.log(allCats)
+function createFours(){
+  console.log("creating four <<<<<< ", allFours.length)
+   allFours.push(new Four())
+    console.log(allFours)
 }
 
 
 var theImage = new Image()
-theImage.src = 'images/Architetto----Gatto.png'
+theImage.src = 'images/four.jpg'
 theImage.onload = function(){
 
 }
 
-function updateAndDrawCats(){
+function updateAndDrawFours(){
   
-    console.log(allCats.length)
-    for(let i=0; i<allCats.length; i++){
+    console.log(allFours.length)
+    for(let i=0; i<allFours.length; i++){
 
 
-      let cats = allCats[i]
+      let fours = allFours[i]
       
 
-      cats.y += cats.direction.y * cats.speed;
-      cats.x += cats.direction.x * cats.speed;
+      fours.y += fours.direction.y * fours.speed;
+      fours.x += fours.direction.x * fours.speed;
       
-      let didCatsColideWithPlayer = collisionDetect(game.player, cats)
-      if(didCatsColideWithPlayer ===true) {
-          allCats.splice(i, 1);
+      let didFoursColideWithPlayer = collisionDetect(game.player, fours)
+      if(didFoursColideWithPlayer ===true) {
+          allFours.splice(i, 1);
           score++;
       
       }
 
-      if( cats.y>canvas.height - cats.height || cats.y<0  ){ 
-        return cats.direction.y = -1*cats.direction.y
+      if( fours.y>canvas.height - fours.height || fours.y<0  ){ 
+        return fours.direction.y = -1*fours.direction.y
       }
 
-      if( cats.x>canvas.width - cats.width || cats.x<0  ){ 
-        return cats.direction.x = -1*cats.direction.x 
+      if( fours.x>canvas.width - fours.width || fours.x<0  ){ 
+        return fours.direction.x = -1*fours.direction.x 
       }
       
-      ctx.drawImage(theImage, cats.x, cats.y, cats.width, cats.height)
+      ctx.drawImage(theImage, fours.x, fours.y, fours.width, fours.height)
     }
 }
-
+// Left off hereeeeeeeeeeeeeee
 class AngryCat extends Cat {
   constructor(width, height, x, y, direction, speed) {
     super(width, height, x, y, direction)
-    this.imgsrc = 'images/black-cat.png';
+    this.imgsrc = 'images/seven.jpg';
     this.ctx = document.getElementById('game-canvas').getContext('2d');
     this.speed = Math.random() * 1;
     }
@@ -138,7 +138,7 @@ function makeAngryCats(){
   createAngryCats();
 }
 var otherImage = new Image()
-otherImage.src = 'images/black-cat.png'
+otherImage.src = 'images/seven.jpg'
 otherImage.onload = function(){
   makeAngryCats() 
 }
