@@ -7,7 +7,7 @@ h1, body {
   justify-content: space-between;
   align-items: flex-start;
   font-family: cursive;
-  color: plum;
+  color: blue;
   font-size: 75px;
 }
 
@@ -33,7 +33,7 @@ h4{
 button{
   position: absolute;
   font-size: 30px;
-  background-color: plum;
+  background-color: blue;
   color: #fff;
   top: 500px;
   left: 130px;

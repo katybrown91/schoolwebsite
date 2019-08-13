@@ -30,7 +30,7 @@ class Game{
 
 let game = new Game();
 let allFours = [];
-let allAngryCats = [];
+let allSevens = [];
 
 
 var canvas = document.getElementById('game-canvas');
@@ -119,7 +119,7 @@ class Seven extends Four {
     this.speed = Math.random() * 1;
     }
 }
-function createAngryCats(){
+function createSevens(){
 
   allSevens.push(new Seven())
  
@@ -180,7 +180,7 @@ let score = 0;
       
 function drawScore() {
   ctx.font = "50px Arial";
-  ctx.fillStyle = "plum";
+  ctx.fillStyle = "blue";
   ctx.fillText("Score: "+ score, 20, 40);
 }
 
@@ -200,7 +200,7 @@ function setTimer(){
   
     function drawTimer() {
       ctx.font = "50px Arial";
-      ctx.fillStyle = "plum";
+      ctx.fillStyle = "blue";
       ctx.fillText("Time: " + sec, 500, 40);
     }
 
