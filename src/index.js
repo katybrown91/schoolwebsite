@@ -29,7 +29,7 @@ class Game{
 }
 
 let game = new Game();
-let allCats = [];
+let allFours = [];
 let allAngryCats = [];
 
 
@@ -111,7 +111,7 @@ function updateAndDrawFours(){
     }
 }
 // Left off hereeeeeeeeeeeeeee
-class AngryCat extends Cat {
+class Seven extends Four {
   constructor(width, height, x, y, direction, speed) {
     super(width, height, x, y, direction)
     this.imgsrc = 'images/seven.jpg';
@@ -121,58 +121,58 @@ class AngryCat extends Cat {
 }
 function createAngryCats(){
 
-  allAngryCats.push(new AngryCat())
+  allSevens.push(new Seven())
  
 }
 
 function startGame(){
   setInterval(() => {
-    createAngryCats()
+    createSevens()
   },1500)
-  createAngryCats() 
-  makeAngryCats()
+  createSevens() 
+  makeSevens()
 }
-function makeAngryCats(){
-  createAngryCats();
-  createAngryCats();
-  createAngryCats();
+function makeSevens(){
+  createSevens();
+  createSevens();
+  createSevens();
 }
 var otherImage = new Image()
 otherImage.src = 'images/seven.jpg'
 otherImage.onload = function(){
-  makeAngryCats() 
+  makeSevens() 
 }
 
-function updateAndDrawAngryCats(){
+function updateAndDrawSevens(){
 
   
-    for(let i=0; i<allAngryCats.length; i++){
+    for(let i=0; i<allSevens.length; i++){
 
 
-      let angryCats = allAngryCats[i]
+      let sevens = allSevens[i]
 
       
 
-      angryCats.y += angryCats.direction.y * angryCats.speed;
-      angryCats.x += angryCats.direction.x * angryCats.speed;
+      sevens.y += sevens.direction.y * sevens.speed;
+      sevens.x += sevens.direction.x * sevens.speed;
       
-      let didAngryCatsColideWithPlayer = collisionDetect(game.player, angryCats)
-      if(didAngryCatsColideWithPlayer ===true) {
-          allAngryCats.splice(i, 1);
+      let didSevensColideWithPlayer = collisionDetect(game.player, sevens)
+      if(didSevensColideWithPlayer ===true) {
+          allSevens.splice(i, 1);
           score--;
       
       }
     
 
-      if( angryCats.y>canvas.height - angryCats.height || angryCats.y<0  ){ 
-        return angryCats.direction.y = -1*angryCats.direction.y
+      if( sevens.y>canvas.height - sevens.height || sevens.y<0  ){ 
+        return sevens.direction.y = -1*sevens.direction.y
       }
 
-      if( angryCats.x>canvas.width - angryCats.width || angryCats.x<0  ){ 
-        return angryCats.direction.x = -1*angryCats.direction.x 
+      if( sevens.x>canvas.width - sevens.width || sevens.x<0  ){ 
+        return sevens.direction.x = -1*sevens.direction.x 
       }
       
-      ctx.drawImage(otherImage, angryCats.x, angryCats.y, angryCats.width, angryCats.height)
+      ctx.drawImage(otherImage, sevens.x, sevens.y, sevens.width, sevens.height)
     }
 }
 
@@ -218,8 +218,8 @@ document.onkeydown = function(e){
 function updateCanvas(){
   ctx.clearRect(0,0,w,800)
   game.player.drawPlayer()
-  updateAndDrawCats()
-  updateAndDrawAngryCats()
+  updateAndDrawFours()
+  updateAndDrawSevens()
   drawScore()
   drawTimer()
   window.requestAnimationFrame(updateCanvas)
@@ -233,7 +233,7 @@ document.getElementById('start').onclick= function(){
       setTimer()
     }, 1000);
   setInterval(() => {
-    createCats()
+    createFours()
   },1500)
   updateCanvas()
 }
