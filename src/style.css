@@ -6,9 +6,10 @@ h1, body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  font-family: cursive;
+  font-family: monospace;
   color: blue;
   font-size: 75px;
+  padding: 10px;
 }
 
 h4{
@@ -33,6 +34,7 @@ h4{
 button{
   position: absolute;
   font-size: 30px;
+  font-family: monospace;
   background-color: blue;
   color: #fff;
   top: 500px;
@@ -42,6 +44,7 @@ button{
 }
 
 .instructions{
-font-size: 30px;
-font-family: Arial, Helvetica, sans-serif;
+font-size: 25px;
+font-family: monospace;
+padding: 30px;
 }
