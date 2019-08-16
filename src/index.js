@@ -31,6 +31,7 @@ class Game{
 let game = new Game();
 let allFours = [];
 let allSevens = [];
+let allEights = [];
 
 
 var canvas = document.getElementById('game-canvas');
@@ -176,6 +177,62 @@ function updateAndDrawSevens(){
     }
 }
 
+class Eight {
+  constructor(width, height, x, y, direction, speed) {
+    this.width = 50;
+    this.height = 70;
+    this.x = Math.floor(Math.random()*500)
+    this.y = Math.floor(Math.random()*500);
+    this.imgsrc = 'images/eight.jpg';
+    this.ctx = document.getElementById('game-canvas').getContext('2d');
+    this.direction = {  x: Math.random() * (3) - 1,  y: Math.random() * (3) - 1 }
+    this.speed = Math.random() * 4;
+    }
+}
+function createEights(){
+  console.log(allEights.length)
+   allEights.push(new Eight())
+    console.log(allEights)
+}
+
+
+var theImage = new Image()
+theImage.src = 'images/eight.jpg'
+theImage.onload = function(){
+
+}
+
+function updateAndDrawEights(){
+  
+    console.log(allEights.length)
+    for(let i=0; i<allEights.length; i++){
+
+
+      let eights = allEights[i]
+      
+
+      eights.y += eights.direction.y * eights.speed;
+      eights.x += eights.direction.x * eights.speed;
+      
+      let didEightsColideWithPlayer = collisionDetect(game.player, eights)
+      if(didEightsColideWithPlayer ===true) {
+          allEights.splice(i, 1);
+          score++;
+      
+      }
+
+      if( eights.y>canvas.height - eights.height || eights.y<0  ){ 
+        return eights.direction.y = -1*eights.direction.y
+      }
+
+      if( eights.x>canvas.width - eights.width || eights.x<0  ){ 
+        return eights.direction.x = -1*eights.direction.x 
+      }
+      
+      ctx.drawImage(theImage, eights.x, eights.y, eights.width, eights.height)
+    }
+}
+
 let score = 0;
       
 function drawScore() {
@@ -220,6 +277,7 @@ function updateCanvas(){
   game.player.drawPlayer()
   updateAndDrawFours()
   updateAndDrawSevens()
+  updateAndDrawEights()
   drawScore()
   drawTimer()
   window.requestAnimationFrame(updateCanvas)
