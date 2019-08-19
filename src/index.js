@@ -32,6 +32,7 @@ let game = new Game();
 let allFours = [];
 let allSevens = [];
 let allEights = [];
+let allNines = [];
 
 
 var canvas = document.getElementById('game-canvas');
@@ -233,6 +234,71 @@ function updateAndDrawEights(){
     }
 }
 
+class Nine extends Four {
+  constructor(width, height, x, y, direction, speed) {
+    super(width, height, x, y, direction)
+    this.imgsrc = 'images/nine.jpg';
+    this.ctx = document.getElementById('game-canvas').getContext('2d');
+    this.speed = Math.random() * 1;
+    }
+}
+function createNines(){
+
+  allNines.push(new Nine())
+ 
+}
+
+function startGame(){
+  setInterval(() => {
+    createNines()
+  },1500)
+  createNines() 
+  makeNines()
+}
+function makeNines(){
+  createNines();
+  createNines();
+  createNines();
+}
+var otherImage = new Image()
+otherImage.src = 'images/nine.jpg'
+otherImage.onload = function(){
+  makeNines() 
+}
+
+function updateAndDrawNines(){
+
+  
+    for(let i=0; i<allNines.length; i++){
+
+
+      let nines = allNines[i]
+
+      
+
+      nines.y += nines.direction.y * nines.speed;
+      nines.x += nines.direction.x * nines.speed;
+      
+      let didNinesColideWithPlayer = collisionDetect(game.player, nines)
+      if(didNinesColideWithPlayer ===true) {
+          allNines.splice(i, 1);
+          score--;
+      
+      }
+    
+
+      if( nines.y>canvas.height - nines.height || nines.y<0  ){ 
+        return nines.direction.y = -1*nines.direction.y
+      }
+
+      if( nines.x>canvas.width - nines.width || nines.x<0  ){ 
+        return nines.direction.x = -1*nines.direction.x 
+      }
+      
+      ctx.drawImage(otherImage, nines.x, nines.y, nines.width, nines.height)
+    }
+}
+
 let score = 0;
       
 function drawScore() {
@@ -278,6 +344,7 @@ function updateCanvas(){
   updateAndDrawFours()
   updateAndDrawSevens()
   updateAndDrawEights()
+  updateAndDrawNines()
   drawScore()
   drawTimer()
   window.requestAnimationFrame(updateCanvas)
@@ -292,6 +359,7 @@ document.getElementById('start').onclick= function(){
     }, 1000);
   setInterval(() => {
     createFours()
+    createEights()
   },1500)
   updateCanvas()
 }
